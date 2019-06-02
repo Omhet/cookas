@@ -1,5 +1,5 @@
-import { useEffect, useState } from "preact/hooks";
-import { showcaseUrl } from "./consts";
+import { useEffect, useState } from 'preact/hooks';
+import { showcaseUrl } from './consts';
 
 export function getRecipesSearchUrl(query: string) {
   return `https://recipes-search.glitch.me/search?q=${query}`;

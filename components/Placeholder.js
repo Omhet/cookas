@@ -19,15 +19,16 @@ const Placeholder = props => {
     <Loader>{loaderContent}</Loader>
   );
 
+
   return (
     <div class={props.class}>
-      {isError ? (
+      {isLoading ? (
+        loader
+      ) : isError ? (
         <div>
           <p>Ой-вэй, что-то пошло не так</p>
           <p>Попробуйте снова</p>
         </div>
-      ) : isLoading ? (
-        loader
       ) : (
         children
       )}

@@ -32,7 +32,13 @@ const RecipeCard = props => {
 
   return (
     <div class={props.class}>
-      <img onClick={handleRecipeClick} class="image" src={image} alt={title} loading="lazy" />
+      <img
+        onClick={handleRecipeClick}
+        class="image"
+        src={image}
+        alt={title}
+        loading="lazy"
+      />
       <div class="content">
         <h3 class="header">{title}</h3>
         <div class="meta">{`${portions} ${time ? time : ''}`}</div>
@@ -50,9 +56,13 @@ const style = {
   alignItems: 'flex-start',
   userSelect: 'none',
   width: '20rem',
-  // boxShadow: '0 0 2px 2px #ddd',
+  
   ' .image': {
     cursor: 'pointer',
+    width: '100%'
+  },
+
+  ' .content': {
     width: '100%'
   },
 
@@ -65,7 +75,7 @@ const style = {
   ' .meta': {
     fontSize: '.8rem',
     color: '#666',
-    marginBottom: '1rem',
+    marginBottom: '1rem'
   }
 };
 

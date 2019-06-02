@@ -1,4 +1,12 @@
 export default function(config, env, helpers) {
+  console.log(config.output);
+  // env.pkg.homepage
+  // config.entry.output.publicPath = '/cookas';
+  if (config.mode === 'production') {
+    // config.entry.output.publicPath = '/cookas';
+    config.output.publicPath = env.pkg.homepage;
+  }
+
   const urlLoader = helpers.getLoadersByName(config, 'url-loader');
   urlLoader.map(
     entry =>
