@@ -3,7 +3,7 @@
   "name": "hello-app",
   "version": "0.0.0",
   "license": "MIT",
-  "homepage": "https://omhet.github.io/hello-preact",
+  "homepage": "https://omhet.github.io/cookas",
   "scripts": {
     "start": "yarn run dev",
     "build": "preact build --no-prerender",
@@ -19,14 +19,11 @@
   ],
   "devDependencies": {
     "classnames": "^2.2.6",
-    "desvg-loader": "^0.1.0",
     "eslint": "^4.5.0",
     "eslint-config-synacor": "^1.1.0",
-    "if-env": "^1.0.0",
+    "gh-pages": "^2.0.1",
     "preact-cli": "@next",
-    "preact-cli-svg-loader": "^1.0.0",
-    "preact-svg-loader": "^0.2.1",
-    "svg-loader": "^0.0.2"
+    "preact-svg-loader": "^0.2.1"
   },
   "dependencies": {
     "picostyle": "^2.2.0",
