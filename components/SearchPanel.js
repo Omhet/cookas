@@ -3,9 +3,12 @@ import { useState, useEffect } from 'preact/hooks';
 import useStoreon from 'storeon/preact';
 import picostyle from 'picostyle';
 import Placeholder from './Placeholder';
+import Input from './Input';
 import RecipeCard from './RecipeCard';
 import { useDataApi, getRecipesSearchUrl } from '../utils/helpers';
 import { showcaseUrl } from '../utils/consts';
+import SearchIcon from '../images/search.svg';
+
 
 const ps = picostyle(h);
 
@@ -40,10 +43,10 @@ const SearchPanel = props => {
   return (
     <div class={props.class}>
       <form class="search" onSubmit={handleSubmit}>
-        <input
-          type="text"
+        <Input
           placeholder="Найти блюдо..."
           onChange={e => setQuery(e.target.value)}
+          icon={<SearchIcon width="16px" height="16px" fill="#888" />}
         />
       </form>
       <Placeholder

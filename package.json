@@ -18,10 +18,15 @@
     "build/*"
   ],
   "devDependencies": {
+    "classnames": "^2.2.6",
+    "desvg-loader": "^0.1.0",
     "eslint": "^4.5.0",
     "eslint-config-synacor": "^1.1.0",
     "if-env": "^1.0.0",
-    "preact-cli": "@next"
+    "preact-cli": "@next",
+    "preact-cli-svg-loader": "^1.0.0",
+    "preact-svg-loader": "^0.2.1",
+    "svg-loader": "^0.0.2"
   },
   "dependencies": {
     "picostyle": "^2.2.0",
