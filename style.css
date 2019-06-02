@@ -20,5 +20,21 @@ h1 {
 }
 
 p {
-	line-height: 1.5;
+  line-height: 1.5;
+}
+
+.recipes {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+@media (max-width: 1040px) {
+  .recipes {
+    grid-template-columns: 1fr 1fr;
   }
+}
+
+@media (max-width: 680px) {
+  .recipes {
+    grid-template-columns: 1fr;
+  }
+}

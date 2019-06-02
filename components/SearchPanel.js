@@ -39,7 +39,7 @@ const SearchPanel = props => {
 
   return (
     <div class={props.class}>
-      <form class="search-form" onSubmit={handleSubmit}>
+      <form class="search" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Найти блюдо..."
@@ -71,22 +71,15 @@ const style = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  ' .search-form': {
-    marginBottom: 32,
-    marginTop: 32
+  ' .search': {
+    marginBottom: '2rem',
+    marginTop: '2rem'
   },
   ' .recipes': {
     marginTop: '3rem',
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr',
     gridGap: '3rem',
-    alignItems: 'baseline',
-    '@media (max-width: 1040px)': {
-      gridTemplateColumns: '1fr 1fr'
-    },
-    '@media (max-width: 680px)': {
-      gridTemplateColumns: '1fr'
-    }
+    alignItems: 'baseline'
   }
 };
 
