@@ -5,7 +5,7 @@
   "license": "MIT",
   "homepage": "https://omhet.github.io/hello-preact",
   "scripts": {
-    "start": "yarn run -s dev",
+    "start": "yarn run dev",
     "build": "preact build --no-prerender",
     "serve": "serve ./build",
     "dev": "preact watch",
