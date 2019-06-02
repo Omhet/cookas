@@ -1,0 +1,31 @@
+{
+  "private": true,
+  "name": "hello-app",
+  "version": "0.0.0",
+  "license": "MIT",
+  "homepage": "https://omhet.github.io/hello-preact",
+  "scripts": {
+    "start": "yarn run -s dev",
+    "build": "preact build --no-prerender",
+    "serve": "serve ./build",
+    "dev": "preact watch",
+    "lint": "eslint src"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-synacor"
+  },
+  "eslintIgnore": [
+    "build/*"
+  ],
+  "devDependencies": {
+    "eslint": "^4.5.0",
+    "eslint-config-synacor": "^1.1.0",
+    "if-env": "^1.0.0",
+    "preact-cli": "@next"
+  },
+  "dependencies": {
+    "picostyle": "^2.2.0",
+    "preact": "@next",
+    "storeon": "@next"
+  }
+}
