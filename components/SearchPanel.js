@@ -2,10 +2,10 @@ import { h } from 'preact';
 import { useState, useEffect } from 'preact/hooks';
 import useStoreon from 'storeon/preact';
 import picostyle from 'picostyle';
-import Placeholder from "./Placeholder";
+import Placeholder from './Placeholder';
 import RecipeCard from './RecipeCard';
 import { useDataApi, getRecipesSearchUrl } from '../utils/helpers';
-import { showcaseUrl } from "../utils/consts";
+import { showcaseUrl } from '../utils/consts';
 
 const ps = picostyle(h);
 
@@ -13,9 +13,13 @@ const SearchPanel = props => {
   const [query, setQuery] = useState('');
   const { dispatch, foundRecipes } = useStoreon('foundRecipes');
   console.log(foundRecipes);
-  const { data, isLoading, isError, doFetch } = useDataApi(showcaseUrl, {
-    recipes: foundRecipes
-  }, true);
+  const { data, isLoading, isError, doFetch } = useDataApi(
+    showcaseUrl,
+    {
+      recipes: foundRecipes
+    },
+    true
+  );
 
   useEffect(() => {
     dispatch('setFoundRecipes', data.recipes);
@@ -35,7 +39,7 @@ const SearchPanel = props => {
 
   return (
     <div class={props.class}>
-      <form class="search" onSubmit={handleSubmit}>
+      <form class="search-form" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Найти блюдо..."
@@ -48,8 +52,8 @@ const SearchPanel = props => {
         loaderContent={loaderContent}
       >
         {foundRecipes && foundRecipes.length > 0 ? (
-          <div className={classes.recipes}>
-            {foundRecipes.map((r) => (
+          <div class="recipes">
+            {foundRecipes.map(r => (
               <RecipeCard key={r.pageUrl} {...r} />
             ))}
           </div>
@@ -67,11 +71,12 @@ const style = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  ' .search': {
+  ' .search-form': {
     marginBottom: 32,
     marginTop: 32
   },
   ' .recipes': {
+    marginTop: '3rem',
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr',
     gridGap: '3rem',
