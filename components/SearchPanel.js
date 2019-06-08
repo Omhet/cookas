@@ -61,10 +61,10 @@ const SearchPanel = props => {
             ))}
           </div>
         ) : (
-          <div>
-            <p>Ох, ничего не найдено</p>
-          </div>
-        )}
+            <div>
+              <p>Ох, ничего не найдено</p>
+            </div>
+          )}
       </Placeholder>
     </div>
   );

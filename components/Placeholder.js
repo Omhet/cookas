@@ -19,7 +19,6 @@ const Placeholder = props => {
     <Loader>{loaderContent}</Loader>
   );
 
-
   return (
     <div class={props.class}>
       {isLoading ? (
@@ -36,6 +35,10 @@ const Placeholder = props => {
   );
 };
 
-const style = {};
+const style = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+};
 
 export default ps(Placeholder)(style);
