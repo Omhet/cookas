@@ -21,7 +21,7 @@ const style = {
   flexDirection: 'column',
   alignItems: 'center',
   textAlign: 'center',
-  fontSize: '2rem',
+  fontSize: '1.7rem',
   marginTop: '10rem',
 
   ' .loader': {
@@ -60,6 +60,11 @@ const style = {
     'to': {
       transform: 'scale(1)'
     }
+  },
+
+  '@media (max-width: 600px)': {
+    fontSize: '1.5rem',
+    marginTop: '5rem'
   }
 
 };
