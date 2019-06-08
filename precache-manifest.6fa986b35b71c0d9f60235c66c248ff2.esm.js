@@ -1,18 +1,18 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "7f2c440d96f85537aed71ab2f0b927fb",
-    "url": "/cookasassets\\icon.png"
+    "url": "/cookasassets/icon.png"
   },
   {
-    "revision": "6bbfc3a239722c6961cde9cd6f011bfb",
-    "url": "/cookasbundle.220d8.esm.js"
+    "revision": "e39e2ed0e385e157f2b7f51345994bfb",
+    "url": "/cookasbundle.6a0be.esm.js"
   },
   {
-    "revision": "13e1b2cd7c1aa4527481",
+    "revision": "26377c8387f69664bf1d",
     "url": "/cookasbundle.78cc1.css"
   },
   {
-    "revision": "fd6bd394ce627dfc8275a8058762582f",
+    "revision": "1c05ecbd4c817534989f2d3811e27358",
     "url": "/cookasindex.html"
   },
   {
