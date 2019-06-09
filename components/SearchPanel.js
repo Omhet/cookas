@@ -15,7 +15,7 @@ const ps = picostyle(h);
 const SearchPanel = props => {
   const [query, setQuery] = useState('');
   const { dispatch, foundRecipes } = useStoreon('foundRecipes');
-  console.log(foundRecipes);
+  // console.log(foundRecipes);
   const { data, isLoading, isError, doFetch } = useDataApi(
     showcaseUrl,
     {

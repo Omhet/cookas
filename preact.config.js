@@ -1,5 +1,5 @@
 export default function(config, env, helpers) {
-  console.log(config.output);
+  // console.log(config.output);
   // env.pkg.homepage
   // config.entry.output.publicPath = '/cookas';
   if (config.mode === 'production') {

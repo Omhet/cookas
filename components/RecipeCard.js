@@ -19,7 +19,7 @@ const RecipeCard = props => {
   const { dispatch, clickedRecipe } = useStoreon('clickedRecipe');
 
   const handleRecipeClick = () => {
-    dispatch('openClickedRecipe', {
+    dispatch('openRecipeModal', {
       title,
       image,
       ingredients,
