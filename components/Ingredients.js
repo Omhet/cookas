@@ -4,12 +4,12 @@ import picostyle from 'picostyle';
 const ps = picostyle(h);
 
 const Ingredients = props => {
-  const { amount, ingredients } = props;
+  const { amount, ingredients, isDefaultOpen} = props;
   return (
-    <details class={props.class}>
+    <details open={isDefaultOpen} class={props.class}>
       <summary>{amount}</summary>
       <div>
-        {ingredients.map(({ name, amount }) => (
+        {ingredients && ingredients.map(({ name, amount }) => (
           <div class="row" key={name}>
             <span class="name">{name}</span>
             <span class="amount">{amount}</span>

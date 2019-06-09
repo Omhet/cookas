@@ -1,20 +1,20 @@
 import createStore from 'storeon';
-import { fetchShowcaseRecipes } from '../utils/helpers';
 
-// async function init() {
-//   const { recipes } = await fetchShowcaseRecipes();
-//   console.log(recipes);
-// }
-
-// init();
-
-const clickedRecipe = store => {
-  store.on('@init', () => ({ clickedRecipe: {}, isRecipeInfoOpen: false }));
+const recipeModal = store => {
+  store.on('@init', () => ({ clickedRecipe: {}, isRecipeModalOpen: false }));
   store.on(
-    'openClickedRecipe',
-    ({ clickedRecipe, isRecipeInfoOpen }, recipe) => ({
+    'openRecipeModal',
+    ({ clickedRecipe, isRecipeModalOpen }, recipe) => ({
       clickedRecipe: recipe,
-      isRecipeInfoOpen: true
+      isRecipeModalOpen: true
+    })
+  );
+
+  store.on(
+    'closeRecipeModal',
+    ({ clickedRecipe, isRecipeModalOpen }) => ({
+      clickedRecipe: {},
+      isRecipeModalOpen: false
     })
   );
 };
@@ -27,4 +27,4 @@ const foundRecipes = store => {
   }));
 };
 
-export const store = createStore([clickedRecipe, foundRecipes]);
+export const store = createStore([recipeModal, foundRecipes]);
