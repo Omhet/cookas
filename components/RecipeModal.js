@@ -40,6 +40,12 @@ const RecipeModal = props => {
 
     console.log(data);
 
+    const imageSrc = isLoading
+    ? image
+    : data.image
+    ? data.image
+    : image;
+
     const loaderContent = (
         <div>
             <p>Ищу рецепт блюда</p>
@@ -52,7 +58,9 @@ const RecipeModal = props => {
             <div onClick={(e) => e.stopPropagation()} class="modal">
                 <h2 class="title">{title}</h2>
                 <div class="content">
-                    <img src={image} alt={title} loading="lazy" />
+                    <div className={cs('image', { loading: isLoading })}>
+                        <img src={imageSrc} alt={title} loading="lazy" />
+                    </div>
                     <div class="info">
                         <Ingredients ingredients={ingredients} amount={ingredientsAmount} isDefaultOpen />
                         <div class="meta">
@@ -93,18 +101,24 @@ const style = {
     display: 'none',
     position: 'fixed',
     width: '100%',
-    // minHeight: '100%',
-    // top: '0',
-    // left: '0',
+    top: '0',
+    left: '0',
+    right: '0',
+    bottom: '0',
     padding: '2rem',
     backgroundColor: 'rgba(0, 0, 0, 0.8)',
-    overflow: 'scroll',
+    overflow: 'auto',
 
 
     '.active': {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
+        display: 'block'
+    },
+
+    ' .modal': {
+        width: '900px',
+        margin: '0 auto',
+        backgroundColor: '#fff',
+        borderRadius: '5px',
     },
 
     ' .title': {
@@ -113,11 +127,21 @@ const style = {
         padding: '1.25rem 2.5rem'
     },
 
-    ' .modal': {
-        width: '900px',
-        // height: '90%',
-        backgroundColor: '#fff',
-        borderRadius: '5px',
+    ' .image': {
+        filter: 'none',
+        display: 'flex',
+        justifyContent: 'center',
+        willChange: 'filter',
+        transition: 'filter .3s'
+    },
+    ' .image > img': {
+        height: '31.5rem',
+        width: '100%',
+        objectFit: 'cover'
+    },
+
+    ' .image.loading': {
+        filter: 'blur(5px)',
     },
 
     ' .content': {
@@ -140,12 +164,13 @@ const style = {
     },
     ' .meta svg': {
         maxWidth: '4rem',
-        maxHeight: '4rem'
+        maxHeight: '4rem',
+        marginBottom: '.5rem'
     },
     ' .meta > *': {
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
     },
 
     ' .steps': {
