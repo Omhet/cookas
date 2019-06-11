@@ -31,7 +31,7 @@ const RecipeCard = props => {
   };
 
   return (
-    <div class={props.class}>
+    <div tabIndex={0} class={props.class}>
       <img
         onClick={handleRecipeClick}
         class="image"
