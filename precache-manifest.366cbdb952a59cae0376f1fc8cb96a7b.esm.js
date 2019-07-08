@@ -4,15 +4,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/cookasassets/icon.png"
   },
   {
-    "revision": "5b2602d2e1c4fdbb0438",
+    "revision": "5a029ee22b116edc6de7",
     "url": "/cookasbundle.02788.css"
   },
   {
-    "revision": "1aaaf583f1792b3b03e7d8b079271a85",
-    "url": "/cookasbundle.99d5a.esm.js"
+    "revision": "e431d4d64aa597b3c103342b939cc312",
+    "url": "/cookasbundle.82c1e.esm.js"
   },
   {
-    "revision": "88f9ef7f9aac8302089cf6b5ea8c8433",
+    "revision": "bd7ad59e507ad44dc34572596b3be0d5",
     "url": "/cookasindex.html"
   },
   {
