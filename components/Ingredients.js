@@ -1,12 +1,13 @@
 import { h } from 'preact';
 import picostyle from 'picostyle';
+import cs from 'classnames';
 
 const ps = picostyle(h);
 
 const Ingredients = props => {
-  const { amount, ingredients, isDefaultOpen} = props;
+  const { amount, ingredients, isDefaultOpen, className} = props;
   return (
-    <details open={isDefaultOpen} class={props.class}>
+    <details open={isDefaultOpen} class={cs(className, props.class)}>
       <summary>{amount}</summary>
       <div>
         {ingredients && ingredients.map(({ name, amount }) => (

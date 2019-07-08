@@ -66,29 +66,38 @@ const RecipeModal = props => {
                     <div class="label">
                         <h2 class="title">{title}</h2>
                         <div class="actions">
-                            <CalendarIcon class="plan" />
-                            <EmptyLikeIcon class="like" />
+                            <div class="plan">
+                                <CalendarIcon />
+                            </div>
+                            <div class="like">
+                                <EmptyLikeIcon />
+                            </div>
+
                         </div>
                     </div>
                 </div>
                 <div class="content">
 
                     <div class="info">
+                        <div class="meta">
+                            <div class="portion">
+                                <PortionIcon />
+                                <div>{portions}</div>
+                            </div>
+                            {time ?
+                                <div class="clock">
+                                    <ClockIcon />
+                                    <div>{time}</div>
+                                </div>
+                                : null}
+                        </div>
                         <Ingredients
+                            className="ingredients"
                             ingredients={ingredients}
                             amount={ingredientsAmount}
                             isDefaultOpen
                         />
-                        <div class="meta">
-                            <div>
-                                <PortionIcon />
-                                <div>{portions}</div>
-                            </div>
-                            <div>
-                                <ClockIcon />
-                                <div>{time ? time : ''}</div>
-                            </div>
-                        </div>
+
                     </div>
                     <Placeholder
                         loaderContent={loaderContent}
@@ -130,7 +139,8 @@ const style = {
     },
 
     ' .modal': {
-        width: '900px',
+        width: '70vw',
+        maxWidth: '55rem',
         margin: '0 auto',
         backgroundColor: '#fff',
     },
@@ -158,23 +168,29 @@ const style = {
         right: "0",
         bottom: "0em",
         display: 'flex',
+        flexWrap: 'wrap',
         justifyContent: 'space-between',
+        alignItems: 'center',
         padding: "3rem 2.5rem",
         backgroundColor: "rgba(0,0,0,0.4)"
     },
     ' .title': {
-        margin: '0',
+        margin: '0 0 1rem 0',
         color: 'aliceblue'
     },
     ' .actions': {
-        display: 'flex'
+        display: 'flex',
+    },
+    ' .actions > *': {
+        cursor: 'pointer',
+        borderRadius: '50%',
+        padding: '1rem',
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        transition: 'all .2s'
     },
     ' .actions svg': {
-        width: '2.5rem',
-        height: '2.5rem',
-        cursor: 'pointer'
-    },
-    ' .actions svg:hover': {
+        width: '2rem',
+        height: '2rem',
     },
 
     ' .like': {
@@ -182,25 +198,36 @@ const style = {
         marginLeft: '2rem'
     },
     ' .plan': {
-        fill: 'aliceblue'
+        fill: '#333'
+    },
+    ' .like:hover': {
+        fill: 'aliceblue',
+        backgroundColor: '#a5001d'
+    },
+    ' .plan:hover': {
+        fill: 'aliceblue',
+        backgroundColor: '#333'
     },
 
     ' .content': {
-        padding: '2.5rem'
+        padding: '0 7rem 2.5rem 7rem'
     },
 
     ' .info': {
         display: 'flex',
-        marginTop: '2rem'
+        flexDirection: 'column',
+        marginTop: '4rem'
     },
     ' .info > *': {
         flex: '1'
     },
 
+
     ' .meta': {
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-evenly'
+        justifyContent: 'space-evenly',
+        marginBottom: '4rem'
     },
     ' .meta svg': {
         maxWidth: '3rem',
@@ -217,10 +244,40 @@ const style = {
         marginTop: '4rem',
         fontSize: '1.1rem',
         textAlign: 'justify',
-        paddingRight: '8rem'
     },
     ' .step': {
         marginBottom: '3rem'
+    },
+
+    '@media (max-width: 900px)': {
+        padding: '0',
+        ' .modal': {
+            width: '100vw !important',
+            margin: '0 !important'
+        }
+    },
+
+    '@media (max-width: 600px)': {
+        ' .content': {
+            padding: '0 3rem 2.5rem 3rem !important'
+        },
+        ' .actions': {
+
+        },
+        ' .actions svg': {
+            width: '2rem !important',
+            height: '1.7rem !important',
+        },
+        ' .actions > *': {
+            padding: '.9rem !important',
+        },
+        ' .title': {
+            marginBottom: '1.5rem !important'
+        },
+        ' .label': {
+            justifyContent: 'center !important',
+            padding: "1.5rem 1rem !important"
+        }
     }
 };
 
