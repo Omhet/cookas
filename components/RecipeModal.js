@@ -10,6 +10,7 @@ import PortionIcon from '../images/portion.svg';
 import ClockIcon from '../images/clock.svg';
 import EmptyLikeIcon from '../images/like-empty.svg';
 import CalendarIcon from '../images/calendar.svg';
+import CancelIcon from '../images/cancel.svg';
 
 const ps = picostyle(h);
 
@@ -60,7 +61,11 @@ const RecipeModal = props => {
             onClick={() => dispatch('closeRecipeModal')}
             class={cs(props.class, { active: isRecipeModalOpen })}
         >
+
             <div onClick={e => e.stopPropagation()} class="modal">
+                <div class="cancel">
+                    <CancelIcon onClick={() => dispatch('closeRecipeModal')}  />
+                </div>
                 <div class='image'>
                     <img class={cs({ loading: isLoading })} src={imageSrc} alt={title} loading="lazy" />
                     <div class="label">
@@ -139,10 +144,36 @@ const style = {
     },
 
     ' .modal': {
+        position: 'relative',
         width: '70vw',
         maxWidth: '55rem',
         margin: '0 auto',
         backgroundColor: '#fff',
+        overflow: 'hidden'
+    },
+
+    ' .cancel': {
+        cursor: 'pointer',
+        position: 'absolute',
+        zIndex: '1',
+        top: '-.7rem',
+        right: '-.7rem',
+        width: '1rem',
+        height: '1rem',
+        fill: 'rgba(0,0,0,0.5)',
+        transition: 'all .3s',
+        borderRadius: '50%',
+        padding: '1.4rem',
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    },
+    ' .cancel > svg': {
+        width: '100%',
+        height: '100%',
+    },
+
+    ' .cancel:hover': {
+        width: '1.2rem',
+        height: '1.2rem',
     },
 
     ' .image': {
@@ -258,7 +289,7 @@ const style = {
     },
 
     '@media (max-width: 600px)': {
-        ' .content': {
+        ' .modal .content': {
             padding: '0 3rem 2.5rem 3rem !important'
         },
         ' .actions': {
