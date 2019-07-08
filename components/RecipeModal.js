@@ -46,6 +46,10 @@ const RecipeModal = props => {
         }
     }, [pageUrl]);
 
+    const handleImageError = (e) => {
+        e.target.src = '../images/no-photo.svg'
+    };
+
 
     const imageSrc = isLoading ? image : data.image ? data.image : image;
 
@@ -64,10 +68,10 @@ const RecipeModal = props => {
 
             <div onClick={e => e.stopPropagation()} class="modal">
                 <div class="cancel">
-                    <CancelIcon onClick={() => dispatch('closeRecipeModal')}  />
+                    <CancelIcon onClick={() => dispatch('closeRecipeModal')} />
                 </div>
                 <div class='image'>
-                    <img class={cs({ loading: isLoading })} src={imageSrc} alt={title} loading="lazy" />
+                    <img onError={handleImageError} class={cs({ loading: isLoading })} src={imageSrc} alt={title} loading="lazy" />
                     <div class="label">
                         <h2 class="title">{title}</h2>
                         <div class="actions">
