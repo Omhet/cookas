@@ -30,10 +30,15 @@ const RecipeCard = props => {
     });
   };
 
+  const handleImageError = (e) => {
+    e.target.src = '../images/no-photo.svg'
+  };
+
   return (
     <div tabIndex={0} class={props.class}>
       <img
         onClick={handleRecipeClick}
+        onError={handleImageError}
         class="image"
         src={image}
         alt={title}
@@ -59,7 +64,8 @@ const style = {
   
   ' .image': {
     cursor: 'pointer',
-    width: '100%'
+    width: '100%',
+    maxHeight: '20rem'
   },
 
   ' .content': {
