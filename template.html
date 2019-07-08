@@ -1,31 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>Cookas</title>
-		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-		<link rel="manifest" href="<%= htmlWebpackPlugin.files.publicPath %>manifest.json">
-		<% if (htmlWebpackPlugin.options.manifest.theme_color) { %>
-			<meta name="theme-color" content="<%= htmlWebpackPlugin.options.manifest.theme_color %>">
-		<% } %>
-		<% for (var chunk of webpack.chunks) { %>
-		 <% if (chunk.names.length === 1 && chunk.names[0] === 'polyfills') continue; %>
-			<% for (var file of chunk.files) { %>
-				<% if (htmlWebpackPlugin.options.preload && file.match(/\.(js|css)$/)) { %>
-					<link rel="preload" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>">
-				<% } else if (file.match(/manifest\.json$/)) { %>
-					<link rel="manifest" href="<%= htmlWebpackPlugin.files.publicPath + file %>">
-				<% } %>
-			<% } %>
-		<% } %>
-	</head>
-	<body>
-		<%= htmlWebpackPlugin.options.ssr({
+
+<head>
+	<meta charset="utf-8">
+	<title>Cookas</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="manifest" href="<%= htmlWebpackPlugin.files.publicPath %>manifest.json">
+	<% if (htmlWebpackPlugin.options.manifest.theme_color) { %>
+	<meta name="theme-color" content="<%= htmlWebpackPlugin.options.manifest.theme_color %>">
+	<% } %>
+	<% for (var chunk of webpack.chunks) { %>
+	<% if (chunk.names.length === 1 && chunk.names[0] === 'polyfills') continue; %>
+	<% for (var file of chunk.files) { %>
+	<% if (htmlWebpackPlugin.options.preload && file.match(/\.(js|css)$/)) { %>
+	<link rel="preload" href="<%= htmlWebpackPlugin.files.publicPath + file %>"
+		as="<%= file.match(/\.css$/)?'style':'script' %>">
+	<% } else if (file.match(/manifest\.json$/)) { %>
+	<link rel="manifest" href="<%= htmlWebpackPlugin.files.publicPath + file %>">
+	<% } %>
+	<% } %>
+	<% } %>
+</head>
+
+<body>
+	<%= htmlWebpackPlugin.options.ssr({
 			url: '/'
 		}) %>
-		<script defer src="<%= htmlWebpackPlugin.files.chunks['bundle'].entry %>"></script>
-		<script>window.fetch||document.write('<script src="<%= htmlWebpackPlugin.files.chunks["polyfills"].entry %>"><\/script>')</script>
-	</body>
+	<div class="loader active"></div>
+	<h1>Загружаемся</h1>
+	<style>
+		body {
+			margin: 0 auto;
+			padding: 0;
+			max-width: 980px;
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+				'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+				sans-serif;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+		}
+
+		h1 {
+			margin-top: 1.5rem;
+			font-size: 1.5rem;
+		}
+
+		.loader {
+			display: none;
+		}
+
+		.loader.active {
+			display: flex;
+		}
+
+		.loader {
+			width: 3.5em;
+			height: 3.5em;
+			border: 3px solid transparent;
+			border-top-color: #222;
+			border-bottom-color: #222;
+			border-radius: 50%;
+			animation: spin 1.5s linear infinite;
+		}
+
+		.loader:before {
+			content: '';
+			display: block;
+			margin: auto;
+			width: 0.75em;
+			height: 0.75em;
+			border: 3px solid #222;
+			border-radius: 50%;
+			animation: pulse 1s alternate ease-in-out infinite;
+		}
+
+		@keyframes spin {
+			to {
+				transform: rotate(360deg);
+			}
+		}
+
+		@keyframes pulse {
+			from {
+				transform: scale(0.5);
+			}
+
+			to {
+				transform: scale(1);
+			}
+		}
+	</style>
+	<script defer src="<%= htmlWebpackPlugin.files.chunks['bundle'].entry %>"></script>
+	<script>window.fetch || document.write('<script src="<%= htmlWebpackPlugin.files.chunks["polyfills"].entry %>"><\/script>')</script>
+</body>
+
 </html>
