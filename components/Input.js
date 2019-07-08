@@ -38,6 +38,17 @@ const style = {
     border: 'none',
     outline: 'none'
   },
+  ' input + svg': {
+    cursor: 'pointer',
+    width: '1rem',
+    height: '1rem',
+    fill: '#888'
+  },
+  ' input + svg:hover': {
+    transform: 'scale(1.2)',
+    transition: 'all .3s',
+    fill: "#444"
+  },
   ' input:focus': {
     borderColor: '#85b7d9'
   },

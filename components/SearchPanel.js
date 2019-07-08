@@ -15,7 +15,6 @@ const ps = picostyle(h);
 const SearchPanel = props => {
   const [query, setQuery] = useState('');
   const { dispatch, foundRecipes } = useStoreon('foundRecipes');
-  // console.log(foundRecipes);
   const { data, isLoading, isError, doFetch } = useDataApi(
     showcaseUrl,
     {
@@ -28,7 +27,8 @@ const SearchPanel = props => {
     dispatch('setFoundRecipes', data.recipes);
   }, [data]);
 
-  function handleSubmit(e) {
+  function handleRecipesQuery(e) {
+    if (!query) return;
     e.preventDefault();
     doFetch(getRecipesSearchUrl(query));
   }
@@ -42,11 +42,11 @@ const SearchPanel = props => {
 
   return (
     <div class={props.class}>
-      <form class="search" onSubmit={handleSubmit}>
+      <form class="search" onSubmit={handleRecipesQuery}>
         <Input
           placeholder="Найти блюдо..."
           onChange={e => setQuery(e.target.value)}
-          icon={<SearchIcon width="16px" height="16px" fill="#888" />}
+          icon={<SearchIcon onClick={handleRecipesQuery} />}
         />
       </form>
       <Placeholder
