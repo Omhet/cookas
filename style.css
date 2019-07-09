@@ -5,6 +5,7 @@ body {
   margin: 0 auto;
   padding: 0;
   max-width: 980px;
+  min-height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -23,24 +24,23 @@ p {
   line-height: 1.5;
 }
 
-.recipes {
-  grid-template-columns: 1fr 1fr 1fr;
+svg {
+  width: 100%;
+  height: 100%;
 }
 
-@media (max-width: 1040px) {
-  .recipes {
-    grid-template-columns: 1fr 1fr;
+@keyframes pulse {
+  from {
+    transform: 'scale(0.5)'
+  }
+
+  to {
+    transform: 'scale(1)'
   }
 }
 
-@media (max-width: 680px) {
-  .recipes {
-    grid-template-columns: 1fr;
+@keyframes spin {
+  to {
+    transform: 'rotate(360deg)'
   }
 }
-
-/* @media (max-width: 900px) {
-  .content {
-    grid-template-columns: 1fr;
-  }
-} */

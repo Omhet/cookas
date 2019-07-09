@@ -1,9 +1,6 @@
-import { h } from 'preact';
 import useStoreon from 'storeon/preact';
-import picostyle from 'picostyle';
+import cxs from 'cxs'
 import Ingredients from './Ingredients';
-
-const ps = picostyle(h);
 
 const RecipeCard = props => {
   const {
@@ -31,11 +28,11 @@ const RecipeCard = props => {
   };
 
   const handleImageError = (e) => {
-    e.target.src = '../images/no-photo.svg'
+    e.target.src = '../assets/no-photo.svg'
   };
 
   return (
-    <div tabIndex={0} class={props.class}>
+    <div tabIndex={0} class={cxs(style.main)}>
       <img
         onClick={handleRecipeClick}
         onError={handleImageError}
@@ -43,46 +40,47 @@ const RecipeCard = props => {
         src={image}
         alt={title}
         loading="lazy"
+        class={cxs(style.image)}
       />
-      <div class="content">
-        <h3 class="header">{title}</h3>
-        <div class="meta">{`${portions} ${time ? time : ''}`}</div>
-        <div class="description">
-          <Ingredients amount={ingredientsAmount} ingredients={ingredients} />
-        </div>
+      <div class={cxs(style.content)} >
+        <h3 class={cxs(style.header)} >{title}</h3>
+        <div class={cxs(style.meta)} >{`${portions} ${time ? time : ''}`}</div>
+        <Ingredients amount={ingredientsAmount} ingredients={ingredients} />
       </div>
     </div>
   );
 };
 
 const style = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'flex-start',
-  userSelect: 'none',
-  width: '20rem',
-  
-  ' .image': {
+  main: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    userSelect: 'none',
+    width: '20rem',
+  },
+
+  image: {
     cursor: 'pointer',
     width: '100%',
     maxHeight: '20rem'
   },
 
-  ' .content': {
+  content: {
     width: '100%'
   },
 
-  ' .header': {
+  header: {
     marginBottom: '.5rem',
     marginTop: '.5rem',
     color: 'rgba(0,0,0,.85)'
   },
 
-  ' .meta': {
+  meta: {
     fontSize: '.8rem',
     color: '#666',
     marginBottom: '1rem'
   }
 };
 
-export default ps(RecipeCard)(style);
+export default RecipeCard;

@@ -1,7 +1,6 @@
-import { h } from 'preact';
 import { useState, useEffect } from 'preact/hooks';
 import useStoreon from 'storeon/preact';
-import picostyle from 'picostyle';
+import cxs from 'cxs'
 import Placeholder from './Placeholder';
 import Input from './Input';
 import RecipeCard from './RecipeCard';
@@ -9,8 +8,6 @@ import { useDataApi, getRecipesSearchUrl } from '../utils/helpers';
 import { showcaseUrl } from '../utils/consts';
 import SearchIcon from '../images/search.svg';
 
-
-const ps = picostyle(h);
 
 const SearchPanel = props => {
   const [query, setQuery] = useState('');
@@ -41,8 +38,8 @@ const SearchPanel = props => {
   );
 
   return (
-    <div class={props.class}>
-      <form class="search" onSubmit={handleRecipesQuery}>
+    <div class={cxs(style.main)}>
+      <form class={cxs(style.search)} onSubmit={handleRecipesQuery}>
         <Input
           placeholder="Найти блюдо..."
           onChange={e => setQuery(e.target.value)}
@@ -55,7 +52,7 @@ const SearchPanel = props => {
         loaderContent={loaderContent}
       >
         {foundRecipes && foundRecipes.length > 0 ? (
-          <div class="recipes">
+          <div class={cxs(style.recipes)}>
             {foundRecipes.map(r => (
               <RecipeCard key={r.pageUrl} {...r} />
             ))}
@@ -71,19 +68,28 @@ const SearchPanel = props => {
 };
 
 const style = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  ' .search': {
+  main: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
+  search: {
     marginBottom: '2rem',
     marginTop: '2rem'
   },
-  ' .recipes': {
+  recipes: {
     marginTop: '3rem',
     display: 'grid',
     gridGap: '3rem',
-    alignItems: 'baseline'
+    alignItems: 'baseline',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    '@media (max-width: 1040px)': {
+      gridTemplateColumns: '1fr 1fr'
+    },
+    '@media (max-width: 680px)': {
+      gridTemplateColumns: '1fr'
+    }
   }
 };
 
-export default ps(SearchPanel)(style);
+export default SearchPanel;

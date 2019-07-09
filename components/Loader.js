@@ -1,13 +1,10 @@
-import { h } from 'preact';
-import picostyle from 'picostyle';
-
-const ps = picostyle(h);
+import cxs from 'cxs'
 
 const Loader = props => {
 
   return (
-    <div class={props.class}>
-      <div class={'loader'}></div>
+    <div class={cxs(style.main)}>
+      <div class={cxs(style.loader)}></div>
       {props.children}
     </div>
   );
@@ -16,15 +13,20 @@ const Loader = props => {
 const loaderColor = '#222';
 
 const style = {
+  main: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'center',
+    fontSize: '1.7rem',
+    marginTop: '10rem',
+    '@media (max-width: 600px)': {
+      fontSize: '1.5rem',
+      marginTop: '5rem'
+    }
+  },
 
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  textAlign: 'center',
-  fontSize: '1.7rem',
-  marginTop: '10rem',
-
-  ' .loader': {
+  loader: {
     marginBottom: '3rem',
     display: "flex",
     width: "3.5em",
@@ -35,40 +37,25 @@ const style = {
     borderRadius: "50%",
     animation: "spin 1.5s linear infinite",
 
-  },
-  ' .loader:before': {
-    content: "''",
-    display: "block",
-    margin: "auto",
-    width: "0.75em",
-    height: "0.75em",
-    border: `3px solid ${loaderColor}`,
-    borderRadius: "50%",
-    animation: "pulse 1s alternate ease-in-out infinite"
-  },
-
-  '@keyframes spin': {
-    to: {
-      transform: 'rotate(360deg)'
-    }
-  },
-
-  '@keyframes pulse': {
-    'from': {
-      transform: 'scale(0.5)'
+    ':before': {
+      content: "''",
+      display: "block",
+      margin: "auto",
+      width: "0.75em",
+      height: "0.75em",
+      border: `3px solid ${loaderColor}`,
+      borderRadius: "50%",
+      animation: "pulse 1s alternate ease-in-out infinite"
     },
-    'to': {
-      transform: 'scale(1)'
-    }
+
+    
+
+    
   },
 
-  '@media (max-width: 600px)': {
-    fontSize: '1.5rem',
-    marginTop: '5rem'
+  spin: {
+    
   }
-
 };
 
-
-
-export default ps(Loader)(style);
+export default Loader;
