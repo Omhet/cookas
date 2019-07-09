@@ -1,8 +1,6 @@
-import { h } from 'preact';
 import useStoreon from 'storeon/preact';
-import picostyle from 'picostyle';
+import cxs from 'cxs'
 
-const ps = picostyle(h);
 
 const Temp = props => {
 
@@ -10,14 +8,16 @@ const Temp = props => {
 
 
   return (
-    <div class={props.class}>
+    <div class={cxs(style.main)}>
 
     </div>
   );
 };
 
 const style = {
+  main: {
 
+  },
 };
 
-export default ps(Temp)(style);
+export default Temp;

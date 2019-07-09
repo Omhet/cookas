@@ -1,8 +1,5 @@
-import { h } from 'preact';
-import picostyle from 'picostyle';
+import cxs from 'cxs'
 import Loader from './Loader';
-
-const ps = picostyle(h);
 
 const Placeholder = props => {
   const {
@@ -16,11 +13,11 @@ const Placeholder = props => {
   const loader = isText ? (
     <Loader>{loaderContent}</Loader>
   ) : (
-    <Loader>{loaderContent}</Loader>
-  );
+      <Loader>{loaderContent}</Loader>
+    );
 
   return (
-    <div class={props.class}>
+    <div class={cxs(style.main)}>
       {isLoading ? (
         loader
       ) : isError ? (
@@ -29,16 +26,18 @@ const Placeholder = props => {
           <p>Попробуйте снова</p>
         </div>
       ) : (
-        children
-      )}
+            children
+          )}
     </div>
   );
 };
 
 const style = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
+  main: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  }
 };
 
-export default ps(Placeholder)(style);
+export default Placeholder;
