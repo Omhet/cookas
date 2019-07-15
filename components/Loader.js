@@ -1,3 +1,4 @@
+import { h } from 'preact';
 import cxs from 'cxs'
 
 const Loader = props => {

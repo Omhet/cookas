@@ -1,3 +1,4 @@
+import { h } from 'preact';
 import { useEffect } from 'preact/hooks';
 import useStoreon from 'storeon/preact';
 import cxs from 'cxs'
