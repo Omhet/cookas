@@ -1,3 +1,4 @@
+import { h } from 'preact';
 import { useState } from 'preact/hooks';
 import cs from 'classnames';
 import cxs from 'cxs'

@@ -1,3 +1,4 @@
+import { h } from 'preact';
 import StoreContext from 'storeon/preact/context';
 import { store } from './store';
 import './style';

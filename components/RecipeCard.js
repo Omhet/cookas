@@ -1,3 +1,4 @@
+import { h } from 'preact';
 import useStoreon from 'storeon/preact';
 import cxs from 'cxs'
 import Ingredients from './Ingredients';
