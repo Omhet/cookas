@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import { useEffect } from 'preact/hooks';
 import useStoreon from 'storeon/preact';
-import picostyle from 'picostyle';
+import cxs from 'cxs'
 import cs from 'classnames';
 import { useDataApi, getRecipeUrl } from '../utils/helpers';
 import Ingredients from './Ingredients';
@@ -12,14 +12,12 @@ import EmptyLikeIcon from '../images/like-empty.svg';
 import CalendarIcon from '../images/calendar.svg';
 import CancelIcon from '../images/cancel.svg';
 
-const ps = picostyle(h);
 
 const RecipeModal = props => {
     const { dispatch, clickedRecipe, isRecipeModalOpen } = useStoreon(
         'clickedRecipe',
         'isRecipeModalOpen'
     );
-
 
     const {
         title,
@@ -47,7 +45,7 @@ const RecipeModal = props => {
     }, [pageUrl]);
 
     const handleImageError = (e) => {
-        e.target.src = '../images/no-photo.svg'
+        e.target.src = '../assets/no-photo.svg'
     };
 
 
@@ -63,45 +61,44 @@ const RecipeModal = props => {
     return (
         <div
             onClick={() => dispatch('closeRecipeModal')}
-            class={cs(props.class, { active: isRecipeModalOpen })}
+            class={cs(cxs(style.main), { active: isRecipeModalOpen })}
         >
 
-            <div onClick={e => e.stopPropagation()} class="modal">
-                <div class="cancel">
+            <div onClick={e => e.stopPropagation()} class={cxs(style.modal)}>
+                <div class={cxs(style.cancel)}>
                     <CancelIcon onClick={() => dispatch('closeRecipeModal')} />
                 </div>
-                <div class='image'>
+                <div class={cxs(style.image)}>
                     <img onError={handleImageError} class={cs({ loading: isLoading })} src={imageSrc} alt={title} loading="lazy" />
-                    <div class="label">
-                        <h2 class="title">{title}</h2>
-                        <div class="actions">
-                            <div class="plan">
+                    <div class={cxs(style.label)}>
+                        <h2 class={cxs(style.title)}>{title}</h2>
+                        <div class={cxs(style.actions)}>
+                            <div class={cxs(style.plan)}>
                                 <CalendarIcon />
                             </div>
-                            <div class="like">
+                            <div class={cxs(style.like)}>
                                 <EmptyLikeIcon />
                             </div>
 
                         </div>
                     </div>
                 </div>
-                <div class="content">
+                <div class={cxs(style.content)} >
 
-                    <div class="info">
-                        <div class="meta">
-                            <div class="portion">
+                    <div class={cxs(style.info)}>
+                        <div class={cxs(style.meta)}>
+                            <div>
                                 <PortionIcon />
                                 <div>{portions}</div>
                             </div>
                             {time ?
-                                <div class="clock">
+                                <div>
                                     <ClockIcon />
                                     <div>{time}</div>
                                 </div>
                                 : null}
                         </div>
                         <Ingredients
-                            className="ingredients"
                             ingredients={ingredients}
                             amount={ingredientsAmount}
                             isDefaultOpen
@@ -114,9 +111,9 @@ const RecipeModal = props => {
                         isLoading={isLoading}
                         isText
                     >
-                        <div class="steps">
+                        <div class={cxs(style.steps)}>
                             {data.steps.map((step, i) => (
-                                <p class="step" key={i}>
+                                <p class={cxs(style.step)} key={i}>
                                     <span style={{ fontWeight: 'bold', marginRight: '1rem' }}>
                                         {step[0] + step[1]}
                                     </span>
@@ -132,31 +129,39 @@ const RecipeModal = props => {
 };
 
 const style = {
-    display: 'none',
-    position: 'fixed',
-    width: '100%',
-    top: '0',
-    left: '0',
-    right: '0',
-    bottom: '0',
-    padding: '2rem',
-    backgroundColor: 'rgba(0, 0, 0, 0.8)',
-    overflow: 'auto',
-
-    '.active': {
-        display: 'block'
+    main: {
+        display: 'none',
+        position: 'fixed',
+        width: '100%',
+        top: '0',
+        left: '0',
+        right: '0',
+        bottom: '0',
+        padding: '2rem',
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        overflow: 'auto',
+        '.active': {
+            display: 'block'
+        },
+        '@media (max-width: 900px)': {
+            padding: '0'
+        }
     },
 
-    ' .modal': {
+    modal: {
         position: 'relative',
         width: '70vw',
         maxWidth: '55rem',
         margin: '0 auto',
         backgroundColor: '#fff',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        '@media (max-width: 900px)': {
+            width: '100vw',
+            margin: '0'
+        },
     },
 
-    ' .cancel': {
+    cancel: {
         cursor: 'pointer',
         position: 'absolute',
         zIndex: '1',
@@ -169,35 +174,29 @@ const style = {
         borderRadius: '50%',
         padding: '1.4rem',
         backgroundColor: 'rgba(255, 255, 255, 0.9)',
-    },
-    ' .cancel > svg': {
-        width: '100%',
-        height: '100%',
-    },
-
-    ' .cancel:hover': {
-        width: '1.2rem',
-        height: '1.2rem',
+        ':hover': {
+            width: '1.2rem',
+            height: '1.2rem',
+        }
     },
 
-    ' .image': {
+    image: {
         position: 'relative',
         display: 'flex',
         justifyContent: 'center',
-    },
-    ' .image > img': {
-        height: '31.5rem',
-        width: '100%',
-        objectFit: 'cover',
-        willChange: 'filter',
-        transition: 'filter .3s'
+        ' > img': {
+            height: '31.5rem',
+            width: '100%',
+            objectFit: 'cover',
+            willChange: 'filter',
+            transition: 'filter .3s',
+            'loading': {
+                filter: 'blur(5px)'
+            }
+        }
     },
 
-    ' img.loading': {
-        filter: 'blur(5px)'
-    },
-
-    ' .label': {
+    label: {
         position: 'absolute',
         left: "0",
         right: "0",
@@ -207,113 +206,100 @@ const style = {
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: "3rem 2.5rem",
-        backgroundColor: "rgba(0,0,0,0.4)"
+        backgroundColor: "rgba(0,0,0,0.4)",
+        '@media (max-width: 600px)': {
+            justifyContent: 'center',
+            padding: "1.5rem 1rem"
+        }
     },
-    ' .title': {
+    title: {
         margin: '0 0 1rem 0',
-        color: 'aliceblue'
+        color: 'aliceblue',
+        '@media (max-width: 600px)': {
+            marginBottom: '1.5rem'
+        },
     },
-    ' .actions': {
+    actions: {
         display: 'flex',
-    },
-    ' .actions > *': {
-        cursor: 'pointer',
-        borderRadius: '50%',
-        padding: '1rem',
-        backgroundColor: 'rgba(255, 255, 255, 0.9)',
-        transition: 'all .2s'
-    },
-    ' .actions svg': {
-        width: '2rem',
-        height: '2rem',
+        ' > *': {
+            cursor: 'pointer',
+            borderRadius: '50%',
+            padding: '1rem',
+            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+            transition: 'all .2s',
+            width: '2rem',
+            height: '2rem',
+        },
+        '@media (max-width: 600px)': {
+            ' svg': {
+                width: '2rem',
+                height: '1.7rem',
+            },
+            ' > *': {
+                padding: '.9rem',
+            },
+        }
     },
 
-    ' .like': {
+
+    like: {
         fill: '#a5001d',
-        marginLeft: '2rem'
+        marginLeft: '2rem',
+        ':hover': {
+            fill: 'aliceblue',
+            backgroundColor: '#a5001d'
+        },
     },
-    ' .plan': {
-        fill: '#333'
-    },
-    ' .like:hover': {
-        fill: 'aliceblue',
-        backgroundColor: '#a5001d'
-    },
-    ' .plan:hover': {
-        fill: 'aliceblue',
-        backgroundColor: '#333'
-    },
-
-    ' .content': {
-        padding: '0 7rem 2.5rem 7rem'
+    plan: {
+        fill: '#333',
+        ':hover': {
+            fill: 'aliceblue',
+            backgroundColor: '#333'
+        },
     },
 
-    ' .info': {
+    content: {
+        padding: '0 7rem 2.5rem 7rem',
+        '@media (max-width: 600px)': {
+            padding: '0 3rem 2.5rem 3rem'
+        },
+    },
+
+    info: {
         display: 'flex',
         flexDirection: 'column',
-        marginTop: '4rem'
-    },
-    ' .info > *': {
-        flex: '1'
+        marginTop: '4rem',
+        ' > *': {
+            flex: '1'
+        }
     },
 
-
-    ' .meta': {
+    meta: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-evenly',
-        marginBottom: '4rem'
-    },
-    ' .meta svg': {
-        maxWidth: '3rem',
-        maxHeight: '3rem',
-        marginBottom: '.5rem'
-    },
-    ' .meta > *': {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center'
+        marginBottom: '4rem',
+        ' svg': {
+            width: '3rem',
+            height: '3rem',
+            marginBottom: '.5rem'
+        },
+        ' > *': {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+        }
     },
 
-    ' .steps': {
+
+    steps: {
         marginTop: '4rem',
         fontSize: '1.1rem',
         textAlign: 'justify',
     },
-    ' .step': {
+    step: {
         marginBottom: '3rem'
     },
-
-    '@media (max-width: 900px)': {
-        padding: '0',
-        ' .modal': {
-            width: '100vw !important',
-            margin: '0 !important'
-        }
-    },
-
-    '@media (max-width: 600px)': {
-        ' .modal .content': {
-            padding: '0 3rem 2.5rem 3rem !important'
-        },
-        ' .actions': {
-
-        },
-        ' .actions svg': {
-            width: '2rem !important',
-            height: '1.7rem !important',
-        },
-        ' .actions > *': {
-            padding: '.9rem !important',
-        },
-        ' .title': {
-            marginBottom: '1.5rem !important'
-        },
-        ' .label': {
-            justifyContent: 'center !important',
-            padding: "1.5rem 1rem !important"
-        }
-    }
 };
 
-export default ps(RecipeModal)(style);
+export default RecipeModal;

@@ -6,7 +6,7 @@
   "homepage": "/cookas",
   "scripts": {
     "start": "yarn run dev",
-    "build": "preact build --no-prerender",
+    "build": "preact build",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d ./build",
     "serve": "serve ./build",
@@ -28,7 +28,7 @@
     "preact-svg-loader": "^0.2.1"
   },
   "dependencies": {
-    "picostyle": "^2.2.0",
+    "cxs": "^6.2.0",
     "preact": "@next",
     "storeon": "@next"
   }
