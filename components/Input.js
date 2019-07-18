@@ -1,16 +1,15 @@
 import { h } from 'preact';
 import { useState } from 'preact/hooks';
 import cs from 'classnames';
-import picostyle from 'picostyle';
-
-const ps = picostyle(h);
+import cxs from 'cxs'
 
 const Input = props => {
   const { onChange, placeholder, icon } = props;
   const [focus, setFocus] = useState(false);
   return (
-    <div class={cs(props.class, { focus })}>
+    <div class={cs(cxs(style.main), { focus })}>
       <input
+        class={cxs(style.input)}
         type="text"
         onChange={onChange}
         placeholder={placeholder}
@@ -23,38 +22,42 @@ const Input = props => {
 };
 
 const style = {
-  position: 'relative',
-  display: 'inline-flex',
-  alignItems: 'center',
-  border: '1px solid rgba(34,36,38,.15)',
-  borderRadius: '.28571429rem',
-  padding: '0.5rem 1rem',
-  '.focus': {
-    borderColor: '#85b7d9'
+  main: {
+    position: 'relative',
+    display: 'inline-flex',
+    alignItems: 'center',
+    border: '1px solid rgba(34,36,38,.15)',
+    borderRadius: '.28571429rem',
+    padding: '0.5rem 1rem',
+    '.focus': {
+      borderColor: '#85b7d9'
+    }
   },
-  ' input': {
+  
+  input: {
     color: 'rgba(0,0,0,.87)',
     fontSize: '.9rem',
     border: 'none',
-    outline: 'none'
+    outline: 'none',
+    ':focus': {
+      borderColor: '#85b7d9'
+    },
+    ':focus + svg': {
+      fill: '#444'
+    },
+    '+ svg': {
+      cursor: 'pointer',
+      width: '1rem',
+      height: '1rem',
+      fill: '#888'
+    },
+    '+ svg:hover': {
+      transform: 'scale(1.2)',
+      transition: 'all .3s',
+      fill: "#444"
+    },
   },
-  ' input + svg': {
-    cursor: 'pointer',
-    width: '1rem',
-    height: '1rem',
-    fill: '#888'
-  },
-  ' input + svg:hover': {
-    transform: 'scale(1.2)',
-    transition: 'all .3s',
-    fill: "#444"
-  },
-  ' input:focus': {
-    borderColor: '#85b7d9'
-  },
-  ' input:focus + svg': {
-    fill: '#444'
-  }
+  
 };
 
-export default ps(Input)(style);
+export default Input;

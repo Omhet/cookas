@@ -1,19 +1,17 @@
 import { h } from 'preact';
-import picostyle from 'picostyle';
+import cxs from 'cxs'
 import cs from 'classnames';
-
-const ps = picostyle(h);
 
 const Ingredients = props => {
   const { amount, ingredients, isDefaultOpen, className} = props;
   return (
-    <details open={isDefaultOpen} class={cs(className, props.class)}>
-      <summary>{amount}</summary>
+    <details open={isDefaultOpen} class={cs(className)}>
+      <summary class={cxs(style.summary)}>{amount}</summary>
       <div>
         {ingredients && ingredients.map(({ name, amount }) => (
-          <div class="row" key={name}>
-            <span class="name">{name}</span>
-            <span class="amount">{amount}</span>
+          <div class={cxs(style.row)} key={name}>
+            <span class={cxs(style.name)}>{name}</span>
+            <span class={cxs(style.amount)}>{amount}</span>
           </div>
         ))}
       </div>
@@ -22,24 +20,24 @@ const Ingredients = props => {
 };
 
 const style = {
-  ' summary': {
+  summary: {
     outline: 'none',
     cursor: 'pointer',
     marginBottom: '1rem'
   },
-  ' .row': {
+  row: {
     color: 'rgba(0,0,0,.68)',
     fontSize: '14px',
     display: 'flex',
     justifyContent: 'space-between',
     marginBottom: '.5rem'
   },
-  ' .name': {
+  name: {
     fontWeight: 'bold'
   },
-  ' .amount': {
+  amount: {
     textAlign: 'right'
   }
 };
 
-export default ps(Ingredients)(style);
+export default Ingredients;
