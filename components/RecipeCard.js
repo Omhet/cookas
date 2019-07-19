@@ -29,7 +29,7 @@ const RecipeCard = props => {
   };
 
   const handleImageError = (e) => {
-    e.target.src = '../assets/no-photo.svg'
+    e.target.src = '../cookas/assets/no-photo.svg'
   };
 
   return (
