@@ -45,7 +45,7 @@ const RecipeModal = props => {
     }, [pageUrl]);
 
     const handleImageError = (e) => {
-        e.target.src = '../assets/no-photo.svg'
+        e.target.src = '../cookas/assets/no-photo.svg'
     };
 
 
