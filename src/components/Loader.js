@@ -1,11 +1,12 @@
 import { h } from 'preact';
-import cxs from 'cxs'
+import { injectStyle } from '../utils/injectStyle';
 
 const Loader = props => {
+  const { classes } = props;
 
   return (
-    <div class={cxs(style.main)}>
-      <div class={cxs(style.loader)}></div>
+    <div class={classes.main}>
+      <div class={classes.loader}></div>
       {props.children}
     </div>
   );
@@ -59,4 +60,4 @@ const style = {
   }
 };
 
-export default Loader;
+export default injectStyle(style)(Loader);
