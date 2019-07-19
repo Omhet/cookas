@@ -1,15 +1,16 @@
 import { h } from 'preact';
 import useStoreon from 'storeon/preact';
-import cxs from 'cxs'
+import { injectStyle } from '../utils/injectStyle';
 
 
 const Temp = props => {
+  const { classes } = props;
 
-  const { dispatch, clickedRecipe } = useStoreon('clickedRecipe');
+  const { dispatch, temp } = useStoreon('temp');
 
 
   return (
-    <div class={cxs(style.main)}>
+    <div class={classes.main}>
 
     </div>
   );
@@ -21,4 +22,4 @@ const style = {
   },
 };
 
-export default Temp;
+export default injectStyle(style)(Temp);
