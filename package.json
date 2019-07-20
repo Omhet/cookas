@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "hello-app",
+  "name": "cookas",
   "version": "0.0.0",
   "license": "MIT",
   "homepage": "/cookas",
@@ -8,7 +8,8 @@
     "start": "yarn run dev",
     "build": "preact build --no-prerender --template ./src/template.html",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d ./build",
+    "deploy": "ghpages",
+    "ghpages": "gh-pages -d ./build",
     "serve": "serve ./build",
     "dev": "preact watch --template ./src/template.html",
     "lint": "eslint src"
