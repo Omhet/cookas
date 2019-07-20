@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/cookasbundle.58a40.css"
   },
   {
-    "revision": "1421a06cc4908817562d103634d32b37",
+    "revision": "44ae00d2836876233906baa4dfdd2a94",
     "url": "/cookasindex.html"
   },
   {
