@@ -4,15 +4,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/cookasassets\\icon.png"
   },
   {
-    "revision": "d7a9fe7faae2d2b18240",
-    "url": "/cookasbundle.2bd89.css"
+    "revision": "5145eaa3b8b9398bedce",
+    "url": "/cookasbundle.5145e.js"
   },
   {
-    "revision": "d7a9fe7faae2d2b18240",
-    "url": "/cookasbundle.d7a9f.js"
+    "revision": "5145eaa3b8b9398bedce",
+    "url": "/cookasbundle.c3d59.css"
   },
   {
-    "revision": "256389a55e82e233a862d9c686fe0584",
+    "revision": "4e7ce83e780a14ec73f64f78f24eb36b",
     "url": "/cookasindex.html"
   },
   {
@@ -24,7 +24,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/cookassw-debug.js"
   },
   {
-    "revision": "cf731a6ea7bfb5188138ca66d4993b78",
+    "revision": "a9cc03bd49ddd4a56ccc823f0c039322",
     "url": "/cookassw-esm.js"
   },
   {
