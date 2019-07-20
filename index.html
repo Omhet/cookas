@@ -1,1 +1,38 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Cookas</title><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="manifest" href="/cookas/manifest.json"><link rel="shortcut icon" href="/cookas/favicon.ico"><link href="/cookas/bundle.dca85.css" rel="stylesheet"></head><body><script defer="defer" src="/cookas/bundle.34274.js"></script><script>window.fetch||document.write('<script src="/cookas/polyfills.764d8.js"><\/script>')</script></body></html>
+Html Webpack Plugin:
+<pre>
+  TypeError: Cannot read property 'trim' of undefined
+  
+  - critters.js:287 
+    [cook-planner-preact]/[critters-webpack-plugin]/dist/critters.js:287:53
+  
+  - critters.js:38 
+    [cook-planner-preact]/[critters-webpack-plugin]/dist/critters.js:38:16
+  
+  - Array.filter
+  
+  - critters.js:34 walkStyleRules
+    [cook-planner-preact]/[critters-webpack-plugin]/dist/critters.js:34:29
+  
+  - critters.js:33 walkStyleRules
+    [cook-planner-preact]/[critters-webpack-plugin]/dist/critters.js:33:18
+  
+  - critters.js:262 Critters.<anonymous>
+    [cook-planner-preact]/[critters-webpack-plugin]/dist/critters.js:262:9
+  
+  - new Promise
+  
+  - critters.js:245 Critters.processStyle
+    [cook-planner-preact]/[critters-webpack-plugin]/dist/critters.js:245:12
+  
+  - critters.js:130 
+    [cook-planner-preact]/[critters-webpack-plugin]/dist/critters.js:130:76
+  
+  - Array.map
+  
+  - critters.js:130 Critters.$If_3
+    [cook-planner-preact]/[critters-webpack-plugin]/dist/critters.js:130:39
+  
+  - critters.js:120 Critters.<anonymous>
+    [cook-planner-preact]/[critters-webpack-plugin]/dist/critters.js:120:34
+  
+</pre>
