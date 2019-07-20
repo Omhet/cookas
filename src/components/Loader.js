@@ -15,7 +15,7 @@ const Loader = props => {
 
 const loaderColor = '#222';
 
-const style = {
+const style = ({ colors: { accent } }) => ({
   main: {
     display: 'flex',
     flexDirection: 'column',
@@ -35,8 +35,8 @@ const style = {
     width: "3.5em",
     height: "3.5em",
     border: "3px solid transparent",
-    borderTopColor: loaderColor,
-    borderBottomColor: loaderColor,
+    borderTopColor: accent.primary,
+    borderBottomColor: accent.primary,
     borderRadius: "50%",
 
     ':before': {
@@ -45,10 +45,10 @@ const style = {
       margin: "auto",
       width: "0.75em",
       height: "0.75em",
-      border: `3px solid ${loaderColor}`,
+      border: `3px solid ${accent.primary}`,
       borderRadius: "50%",
     }
   }
-};
+});
 
 export default injectStyle(style)(Loader);

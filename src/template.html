@@ -31,10 +31,10 @@
 			url: '/'
 		}) %>
 		
-	<div class="splash active">
+	<!-- <div class="splash active">
 		<div class="loader"></div>
 		<h1>Загружаемся</h1>
-	</div>
+	</div> -->
 
 	<script defer src="<%= htmlWebpackPlugin.files.chunks['bundle'].entry %>"></script>
 	<script>window.fetch || document.write('<script src="<%= htmlWebpackPlugin.files.chunks["polyfills"].entry %>"><\/script>')</script>
