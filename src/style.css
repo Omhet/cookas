@@ -29,18 +29,26 @@ svg {
   height: 100%;
 }
 
+.loader {
+  animation: spin 1.5s linear infinite;
+  
+}
+.loader:before {
+  animation: pulse 1s alternate ease-in-out infinite;
+}
+
 @keyframes pulse {
   from {
-    transform: 'scale(0.5)'
+    transform: scale(0.5)
   }
 
   to {
-    transform: 'scale(1)'
+    transform: scale(1)
   }
 }
 
 @keyframes spin {
   to {
-    transform: 'rotate(360deg)'
+    transform: rotate(360deg)
   }
 }

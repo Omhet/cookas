@@ -1,11 +1,13 @@
 import { h } from 'preact';
-import cxs from 'cxs'
+import cs from 'classnames';
+import { injectStyle } from '../utils/injectStyle';
 
 const Loader = props => {
+  const { classes } = props;
 
   return (
-    <div class={cxs(style.main)}>
-      <div class={cxs(style.loader)}></div>
+    <div class={classes.main}>
+      <div class={cs(classes.loader, 'loader')}></div>
       {props.children}
     </div>
   );
@@ -36,7 +38,6 @@ const style = {
     borderTopColor: loaderColor,
     borderBottomColor: loaderColor,
     borderRadius: "50%",
-    animation: "spin 1.5s linear infinite",
 
     ':before': {
       content: "''",
@@ -46,17 +47,8 @@ const style = {
       height: "0.75em",
       border: `3px solid ${loaderColor}`,
       borderRadius: "50%",
-      animation: "pulse 1s alternate ease-in-out infinite"
-    },
-
-    
-
-    
-  },
-
-  spin: {
-    
+    }
   }
 };
 
-export default Loader;
+export default injectStyle(style)(Loader);

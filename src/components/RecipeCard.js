@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import useStoreon from 'storeon/preact';
-import cxs from 'cxs'
+import { injectStyle } from '../utils/injectStyle';
 import Ingredients from './Ingredients';
 
 const RecipeCard = props => {
@@ -11,7 +11,8 @@ const RecipeCard = props => {
     ingredientsAmount,
     ingredients,
     time,
-    portions
+    portions,
+    classes
   } = props;
 
   const { dispatch, clickedRecipe } = useStoreon('clickedRecipe');
@@ -29,11 +30,11 @@ const RecipeCard = props => {
   };
 
   const handleImageError = (e) => {
-    e.target.src = '../assets/no-photo.svg'
+    e.target.src = '../cookas/assets/no-photo.svg'
   };
 
   return (
-    <div tabIndex={0} class={cxs(style.main)}>
+    <div tabIndex={0} class={classes.main}>
       <img
         onClick={handleRecipeClick}
         onError={handleImageError}
@@ -41,11 +42,11 @@ const RecipeCard = props => {
         src={image}
         alt={title}
         loading="lazy"
-        class={cxs(style.image)}
+        class={classes.image}
       />
-      <div class={cxs(style.content)} >
-        <h3 class={cxs(style.header)} >{title}</h3>
-        <div class={cxs(style.meta)} >{`${portions} ${time ? time : ''}`}</div>
+      <div class={classes.content} >
+        <h3 class={classes.header} >{title}</h3>
+        <div class={classes.meta} >{`${portions} ${time ? time : ''}`}</div>
         <Ingredients amount={ingredientsAmount} ingredients={ingredients} />
       </div>
     </div>
@@ -84,4 +85,4 @@ const style = {
   }
 };
 
-export default RecipeCard;
+export default injectStyle(style)(RecipeCard);

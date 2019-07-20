@@ -1,15 +1,15 @@
 import { h } from 'preact';
 import { useState } from 'preact/hooks';
 import cs from 'classnames';
-import cxs from 'cxs'
+import { injectStyle } from '../utils/injectStyle';
 
 const Input = props => {
-  const { onChange, placeholder, icon } = props;
+  const { onChange, placeholder, icon, classes } = props;
   const [focus, setFocus] = useState(false);
   return (
-    <div class={cs(cxs(style.main), { focus })}>
+    <div class={cs(classes.main, { focus })}>
       <input
-        class={cxs(style.input)}
+        class={classes.input}
         type="text"
         onChange={onChange}
         placeholder={placeholder}
@@ -60,4 +60,4 @@ const style = {
   
 };
 
-export default Input;
+export default injectStyle(style)(Input);

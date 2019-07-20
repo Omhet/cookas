@@ -1,9 +1,9 @@
 import { h } from 'preact';
 import { useEffect } from 'preact/hooks';
 import useStoreon from 'storeon/preact';
-import cxs from 'cxs'
 import cs from 'classnames';
 import { useDataApi, getRecipeUrl } from '../utils/helpers';
+import { injectStyle } from '../utils/injectStyle';
 import Ingredients from './Ingredients';
 import Placeholder from './Placeholder';
 import PortionIcon from '../images/portion.svg';
@@ -14,6 +14,8 @@ import CancelIcon from '../images/cancel.svg';
 
 
 const RecipeModal = props => {
+    const { classes } = props;
+
     const { dispatch, clickedRecipe, isRecipeModalOpen } = useStoreon(
         'clickedRecipe',
         'isRecipeModalOpen'
@@ -45,7 +47,7 @@ const RecipeModal = props => {
     }, [pageUrl]);
 
     const handleImageError = (e) => {
-        e.target.src = '../assets/no-photo.svg'
+        e.target.src = '../cookas/assets/no-photo.svg'
     };
 
 
@@ -61,32 +63,32 @@ const RecipeModal = props => {
     return (
         <div
             onClick={() => dispatch('closeRecipeModal')}
-            class={cs(cxs(style.main), { active: isRecipeModalOpen })}
+            class={cs(classes.main, { active: isRecipeModalOpen })}
         >
 
-            <div onClick={e => e.stopPropagation()} class={cxs(style.modal)}>
-                <div class={cxs(style.cancel)}>
+            <div onClick={e => e.stopPropagation()} class={classes.modal}>
+                <div class={classes.cancel}>
                     <CancelIcon onClick={() => dispatch('closeRecipeModal')} />
                 </div>
-                <div class={cxs(style.image)}>
+                <div class={classes.image}>
                     <img onError={handleImageError} class={cs({ loading: isLoading })} src={imageSrc} alt={title} loading="lazy" />
-                    <div class={cxs(style.label)}>
-                        <h2 class={cxs(style.title)}>{title}</h2>
-                        <div class={cxs(style.actions)}>
-                            <div class={cxs(style.plan)}>
+                    <div class={classes.label}>
+                        <h2 class={classes.title}>{title}</h2>
+                        <div class={classes.actions}>
+                            <div class={classes.plan}>
                                 <CalendarIcon />
                             </div>
-                            <div class={cxs(style.like)}>
+                            <div class={classes.like}>
                                 <EmptyLikeIcon />
                             </div>
 
                         </div>
                     </div>
                 </div>
-                <div class={cxs(style.content)} >
+                <div class={classes.content} >
 
-                    <div class={cxs(style.info)}>
-                        <div class={cxs(style.meta)}>
+                    <div class={classes.info}>
+                        <div class={classes.meta}>
                             <div>
                                 <PortionIcon />
                                 <div>{portions}</div>
@@ -111,10 +113,10 @@ const RecipeModal = props => {
                         isLoading={isLoading}
                         isText
                     >
-                        <div class={cxs(style.steps)}>
+                        <div class={classes.steps}>
                             {data.steps.map((step, i) => (
-                                <p class={cxs(style.step)} key={i}>
-                                    <span style={{ fontWeight: 'bold', marginRight: '1rem' }}>
+                                <p class={classes.step} key={i}>
+                                    <span style={{fontWeight: 'bold', marginRight: '1rem' }}>
                                         {step[0] + step[1]}
                                     </span>
                                     {step.slice(2)}
@@ -302,4 +304,4 @@ const style = {
     },
 };
 
-export default RecipeModal;
+export default injectStyle(style)(RecipeModal);

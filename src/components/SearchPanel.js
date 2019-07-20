@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import { useState, useEffect } from 'preact/hooks';
 import useStoreon from 'storeon/preact';
-import cxs from 'cxs'
+import { injectStyle } from '../utils/injectStyle';
 import Placeholder from './Placeholder';
 import Input from './Input';
 import RecipeCard from './RecipeCard';
@@ -11,6 +11,8 @@ import SearchIcon from '../images/search.svg';
 
 
 const SearchPanel = props => {
+  const { classes } = props;
+
   const [query, setQuery] = useState('');
   const { dispatch, foundRecipes } = useStoreon('foundRecipes');
   const { data, isLoading, isError, doFetch } = useDataApi(
@@ -39,8 +41,8 @@ const SearchPanel = props => {
   );
 
   return (
-    <div class={cxs(style.main)}>
-      <form class={cxs(style.search)} onSubmit={handleRecipesQuery}>
+    <div class={classes.main}>
+      <form class={classes.search} onSubmit={handleRecipesQuery}>
         <Input
           placeholder="Найти блюдо..."
           onChange={e => setQuery(e.target.value)}
@@ -53,7 +55,7 @@ const SearchPanel = props => {
         loaderContent={loaderContent}
       >
         {foundRecipes && foundRecipes.length > 0 ? (
-          <div class={cxs(style.recipes)}>
+          <div class={classes.recipes}>
             {foundRecipes.map(r => (
               <RecipeCard key={r.pageUrl} {...r} />
             ))}
@@ -93,4 +95,4 @@ const style = {
   }
 };
 
-export default SearchPanel;
+export default injectStyle(style)(SearchPanel);
