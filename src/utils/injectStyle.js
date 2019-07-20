@@ -1,12 +1,17 @@
 import { h } from 'preact';
-import cxs from 'cxs'
+import cxs from 'cxs';
 
-export const injectStyle = (style) => (View) => {
+export const injectStyle = style => View => {
+  return (props, context = {}) => {
     const classes = {};
+    const { theme = {} } = context;
 
-    for (const className in style) {
-        classes[className] = cxs(style[className]);
+    const finalStyle = typeof style === 'function' ? style(theme) : style;
+
+    for (const className in finalStyle) {
+      classes[className] = cxs(finalStyle[className]);
     }
 
-    return (props) => <View {...props} classes={classes} />
-}
+    return <View {...props} classes={classes} />;
+  };
+};

@@ -19,18 +19,20 @@ const Ingredients = props => {
   );
 };
 
-const style = {
+const style = ({ colors: { text } }) => ({
   summary: {
     outline: 'none',
     cursor: 'pointer',
-    marginBottom: '1rem'
+    marginBottom: '1rem',
+    color: text.primary
   },
   row: {
     color: 'rgba(0,0,0,.68)',
     fontSize: '14px',
     display: 'flex',
     justifyContent: 'space-between',
-    marginBottom: '.5rem'
+    marginBottom: '.5rem',
+    color: text.primary
   },
   name: {
     fontWeight: 'bold'
@@ -38,6 +40,6 @@ const style = {
   amount: {
     textAlign: 'right'
   }
-};
+});
 
 export default injectStyle(style)(Ingredients);

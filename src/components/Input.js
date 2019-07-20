@@ -21,26 +21,29 @@ const Input = props => {
   );
 };
 
-const style = {
+const style = ({ colors: { text, border } }) => ({
   main: {
     position: 'relative',
     display: 'inline-flex',
     alignItems: 'center',
-    border: '1px solid rgba(34,36,38,.15)',
+    border: `1px solid ${border.primary}`,
     borderRadius: '.28571429rem',
     padding: '0.5rem 1rem',
     '.focus': {
       borderColor: '#85b7d9'
     }
   },
-  
+
   input: {
-    color: 'rgba(0,0,0,.87)',
+    color: text.primary,
     fontSize: '.9rem',
     border: 'none',
     outline: 'none',
+    '::placeholder': {
+      color: text.secondary
+    },
     ':focus': {
-      borderColor: '#85b7d9'
+      borderColor: border.interactive
     },
     ':focus + svg': {
       fill: '#444'
@@ -49,15 +52,14 @@ const style = {
       cursor: 'pointer',
       width: '1rem',
       height: '1rem',
-      fill: '#888'
+      fill: text.secondary
     },
     '+ svg:hover': {
       transform: 'scale(1.2)',
       transition: 'all .3s',
-      fill: "#444"
-    },
-  },
-  
-};
+      fill: text.primary
+    }
+  }
+});
 
 export default injectStyle(style)(Input);

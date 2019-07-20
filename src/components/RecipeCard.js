@@ -53,7 +53,7 @@ const RecipeCard = props => {
   );
 };
 
-const style = {
+const style = ({ colors: { text } }) => ({
   main: {
     display: 'flex',
     flexDirection: 'column',
@@ -75,14 +75,14 @@ const style = {
   header: {
     marginBottom: '.5rem',
     marginTop: '.5rem',
-    color: 'rgba(0,0,0,.85)'
+    color: text.primary
   },
 
   meta: {
     fontSize: '.8rem',
-    color: '#666',
+    color: text.secondary,
     marginBottom: '1rem'
   }
-};
+});
 
 export default injectStyle(style)(RecipeCard);

@@ -130,7 +130,7 @@ const RecipeModal = props => {
     );
 };
 
-const style = {
+const style = ({ colors: { text, back } }) => ({
     main: {
         display: 'none',
         position: 'fixed',
@@ -155,7 +155,7 @@ const style = {
         width: '70vw',
         maxWidth: '55rem',
         margin: '0 auto',
-        backgroundColor: '#fff',
+        backgroundColor: back.primary,
         overflow: 'hidden',
         '@media (max-width: 900px)': {
             width: '100vw',
@@ -302,6 +302,6 @@ const style = {
     step: {
         marginBottom: '3rem'
     },
-};
+});
 
 export default injectStyle(style)(RecipeModal);
