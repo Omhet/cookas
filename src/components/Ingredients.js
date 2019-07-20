@@ -1,17 +1,17 @@
 import { h } from 'preact';
-import cxs from 'cxs'
 import cs from 'classnames';
+import { injectStyle } from '../utils/injectStyle';
 
 const Ingredients = props => {
-  const { amount, ingredients, isDefaultOpen, className} = props;
+  const { amount, ingredients, isDefaultOpen, className, classes } = props;
   return (
     <details open={isDefaultOpen} class={cs(className)}>
-      <summary class={cxs(style.summary)}>{amount}</summary>
+      <summary class={classes.summary}>{amount}</summary>
       <div>
         {ingredients && ingredients.map(({ name, amount }) => (
-          <div class={cxs(style.row)} key={name}>
-            <span class={cxs(style.name)}>{name}</span>
-            <span class={cxs(style.amount)}>{amount}</span>
+          <div class={classes.row} key={name}>
+            <span class={classes.name}>{name}</span>
+            <span class={classes.amount}>{amount}</span>
           </div>
         ))}
       </div>
@@ -40,4 +40,4 @@ const style = {
   }
 };
 
-export default Ingredients;
+export default injectStyle(style)(Ingredients);

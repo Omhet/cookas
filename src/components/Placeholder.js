@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import cxs from 'cxs'
+import { injectStyle } from '../utils/injectStyle';
 import Loader from './Loader';
 
 const Placeholder = props => {
@@ -8,7 +8,8 @@ const Placeholder = props => {
     isLoading,
     isText = false,
     loaderContent = 'Загружаю',
-    children
+    children,
+    classes
   } = props;
 
   const loader = isText ? (
@@ -18,7 +19,7 @@ const Placeholder = props => {
     );
 
   return (
-    <div class={cxs(style.main)}>
+    <div class={classes.main}>
       {isLoading ? (
         loader
       ) : isError ? (
@@ -41,4 +42,4 @@ const style = {
   }
 };
 
-export default Placeholder;
+export default injectStyle(style)(Placeholder);
