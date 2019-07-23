@@ -13,8 +13,6 @@ const Loader = props => {
   );
 };
 
-const loaderColor = '#222';
-
 const style = ({ colors: { accent } }) => ({
   main: {
     display: 'flex',
