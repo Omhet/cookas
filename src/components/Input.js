@@ -30,7 +30,7 @@ const style = ({ colors: { text, border } }) => ({
     borderRadius: '.28571429rem',
     padding: '0.5rem 1rem',
     '.focus': {
-      borderColor: '#85b7d9'
+      borderColor: border.interactive
     }
   },
 
@@ -41,9 +41,6 @@ const style = ({ colors: { text, border } }) => ({
     outline: 'none',
     '::placeholder': {
       color: text.secondary
-    },
-    ':focus': {
-      borderColor: border.interactive
     },
     ':focus + svg': {
       fill: '#444'

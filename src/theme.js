@@ -1,10 +1,17 @@
 export default {
   colors: {
-    // primary: '#160F21',
-    // secondary: '#3E374B',
-    // tertiary: '#6B6378',
-    // quaternary: '#9B93AA',
-    // quinary: '#bdbdbd',
+    // primary
+    // secondary
+    // tertiary
+    // quaternary
+    // quinary
+    // invertedPrimary
+    // invertedSecondary
+    // invertedTertiary
+    // invertedQuaternary
+    // invertedQuinary
+
+
     accent: {
       primary: '#363C49',
       secondary: '#58627D'
@@ -14,19 +21,29 @@ export default {
       primary: '#363C49',
       secondary: '#58627D',
       disabled: '#98A1B3',
-      interactive: '#2D6A9F'
+      interactive: '#85b7d9',
+      invertedPrimary: 'aliceblue'
     },
 
     border: {
       primary: '#C4C9D4',
       // secondary: '#58627D',
       disabled: '#98A1B3',
-      interactive: '#2D6A9F'
+      interactive: '#85b7d9'
     },
 
     back: {
       primary: '#FFFFFF',
       secondary: '#E2E4E9'
+    },
+
+    overlay: {
+      primary: 'rgba(0, 0, 0, 0.8)',
+      secondary: 'rgba(0, 0, 0, 0.4)',
+      tertiary: 'rgba(0, 0, 0, 0.2)',
+      invertedPrimary: 'rgba(255, 255, 255, 0.8)',
+      invertedSecondary: 'rgba(255, 255, 255, 0.4)',
+      invertedTertiary: 'rgba(255, 255, 255, 0.2)',
     }
   }
 };

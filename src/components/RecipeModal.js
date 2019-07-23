@@ -130,7 +130,7 @@ const RecipeModal = props => {
     );
 };
 
-const style = ({ colors: { text, back } }) => ({
+const style = ({ colors: { text, back, overlay } }) => ({
     main: {
         display: 'none',
         position: 'fixed',
@@ -140,7 +140,7 @@ const style = ({ colors: { text, back } }) => ({
         right: '0',
         bottom: '0',
         padding: '2rem',
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        backgroundColor: overlay.primary,
         overflow: 'auto',
         '.active': {
             display: 'block'
@@ -171,11 +171,11 @@ const style = ({ colors: { text, back } }) => ({
         right: '-.7rem',
         width: '1rem',
         height: '1rem',
-        fill: 'rgba(0,0,0,0.5)',
+        fill: overlay.secondary,
         transition: 'all .3s',
         borderRadius: '50%',
         padding: '1.4rem',
-        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        backgroundColor: overlay.invertedPrimary,
         ':hover': {
             width: '1.2rem',
             height: '1.2rem',
@@ -208,7 +208,7 @@ const style = ({ colors: { text, back } }) => ({
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: "3rem 2.5rem",
-        backgroundColor: "rgba(0,0,0,0.4)",
+        backgroundColor: overlay.secondary,
         '@media (max-width: 600px)': {
             justifyContent: 'center',
             padding: "1.5rem 1rem"
@@ -216,7 +216,7 @@ const style = ({ colors: { text, back } }) => ({
     },
     title: {
         margin: '0 0 1rem 0',
-        color: 'aliceblue',
+        color: text.invertedPrimary,
         '@media (max-width: 600px)': {
             marginBottom: '1.5rem'
         },
@@ -227,7 +227,7 @@ const style = ({ colors: { text, back } }) => ({
             cursor: 'pointer',
             borderRadius: '50%',
             padding: '1rem',
-            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+            backgroundColor: overlay.invertedPrimary,
             transition: 'all .2s',
             width: '2rem',
             height: '2rem',
@@ -248,14 +248,14 @@ const style = ({ colors: { text, back } }) => ({
         fill: '#a5001d',
         marginLeft: '2rem',
         ':hover': {
-            fill: 'aliceblue',
+            fill: text.invertedPrimary,
             backgroundColor: '#a5001d'
         },
     },
     plan: {
         fill: '#333',
         ':hover': {
-            fill: 'aliceblue',
+            fill: text.invertedPrimary,
             backgroundColor: '#333'
         },
     },
