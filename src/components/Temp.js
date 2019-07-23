@@ -16,10 +16,10 @@ const Temp = props => {
   );
 };
 
-const style = {
+const style = ({ colors: { text } }) => ({
   main: {
 
   },
-};
+});
 
 export default injectStyle(style)(Temp);

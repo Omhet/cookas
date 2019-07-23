@@ -27,7 +27,6 @@ const style = ({ colors: { text } }) => ({
     color: text.primary
   },
   row: {
-    color: 'rgba(0,0,0,.68)',
     fontSize: '14px',
     display: 'flex',
     justifyContent: 'space-between',

@@ -7,8 +7,28 @@ import './style';
 import theme from './theme'
 import SearchPanel from './components/SearchPanel';
 import RecipeModal from './components/RecipeModal';
+import { injectStyle } from './utils/injectStyle';
+
+
+const MainWrapperComponent = props => {
+  const { classes } = props;
+  return <div class={classes.main}>
+    <SearchPanel />
+    <RecipeModal />
+  </div>
+}
+
+const style = ({ colors: { text } }) => ({
+  main: {
+    color: text.primary
+  }
+});
+
+const MainWrapper = injectStyle(style)(MainWrapperComponent);
+
 
 export default function App() {
+
   useEffect(() => {
     console.log('app landed');
 
@@ -21,9 +41,9 @@ export default function App() {
   return (
     <StoreContext.Provider value={store}>
       <ThemeProvider theme={theme}>
-        <SearchPanel />
-        <RecipeModal />
+        <MainWrapper />
       </ThemeProvider>
     </StoreContext.Provider>
   );
 }
+
