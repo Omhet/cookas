@@ -4,7 +4,8 @@ import ThemeProvider from 'cxs/ThemeProvider';
 import StoreContext from 'storeon/preact/context';
 import { store } from './store';
 import './style';
-import theme from './theme'
+import basicTheme from './themes/basic'
+import darkTheme from './themes/dark'
 import SearchPanel from './components/SearchPanel';
 import RecipeModal from './components/RecipeModal';
 import { injectStyle } from './utils/injectStyle';
@@ -18,9 +19,11 @@ const MainWrapperComponent = props => {
   </div>
 }
 
-const style = ({ colors: { text } }) => ({
+const style = ({ colors: { text, back } }) => ({
   main: {
-    color: text.primary
+    color: text.primary,
+    backgroundColor: back.primary,
+    minHeight: '100vh'
   }
 });
 
@@ -40,7 +43,7 @@ export default function App() {
 
   return (
     <StoreContext.Provider value={store}>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={basicTheme}>
         <MainWrapper />
       </ThemeProvider>
     </StoreContext.Provider>

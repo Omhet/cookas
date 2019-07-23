@@ -284,12 +284,14 @@ const style = ({ colors: { text, back, overlay } }) => ({
         ' svg': {
             width: '3rem',
             height: '3rem',
-            marginBottom: '.5rem'
+            marginBottom: '.5rem',
+            fill: text.primary
         },
         ' > *': {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            color: text.secondary
         }
     },
 

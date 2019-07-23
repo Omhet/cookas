@@ -21,7 +21,7 @@ const Input = props => {
   );
 };
 
-const style = ({ colors: { text, border } }) => ({
+const style = ({ colors: { back, text, border } }) => ({
   main: {
     position: 'relative',
     display: 'inline-flex',
@@ -36,6 +36,7 @@ const style = ({ colors: { text, border } }) => ({
 
   input: {
     color: text.primary,
+    backgroundColor: back.primary,
     fontSize: '.9rem',
     border: 'none',
     outline: 'none',
@@ -43,7 +44,7 @@ const style = ({ colors: { text, border } }) => ({
       color: text.secondary
     },
     ':focus + svg': {
-      fill: '#444'
+      fill: text.primary
     },
     '+ svg': {
       cursor: 'pointer',
