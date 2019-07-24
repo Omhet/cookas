@@ -1,12 +1,19 @@
-export default function(config, env, helpers) {
-  // console.log(config.output);
-  // env.pkg.homepage
-  // config.entry.output.publicPath = '/cookas';
+
+
+export default function (config, env, helpers) {
+  productionSettings(config, env);
+  svgLoader(config, helpers);
+  preactCliTypeScript(config);
+}
+
+function productionSettings(config, env) {
   if (config.mode === 'production') {
-    // config.entry.output.publicPath = '/cookas';
     config.output.publicPath = env.pkg.homepage;
   }
+}
 
+
+function svgLoader(config, helpers) {
   const urlLoader = helpers.getLoadersByName(config, 'url-loader');
   urlLoader.map(
     entry =>
@@ -26,4 +33,16 @@ export default function(config, env, helpers) {
     test: /\.svg$/,
     use: ['preact-svg-loader']
   });
+}
+
+
+const preactCliTypeScript = config => {
+  config.module.rules.push({
+    enforce: 'pre',
+    test: /\.tsx?$/,
+    loader: 'awesome-typescript-loader'
+  })
+
+
+  // config.resolve.alias['preact-cli-entrypoint'] = resolve(process.cwd(), 'src', 'index')
 }

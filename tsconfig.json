@@ -1,0 +1,27 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "sourceMap": true,
+        "noEmit": true ,
+        "target": "es5",
+        "jsx": "react",
+        "jsxFactory": "h",
+        "esModuleInterop": true,
+        "allowJs": true,
+        "lib": [
+            "esnext",
+            "dom"
+        ],
+        "module": "esnext",
+        "moduleResolution": "node",
+    },
+    "include": [
+        "./src/**/*.tsx",
+        "./src/**/*.ts",
+        "src/index.js"
+    ],
+    "exclude": [
+        "node_modules",
+        "./build"
+    ]
+}
