@@ -7,7 +7,7 @@ import './style';
 import basicTheme from './themes/basic'
 import darkTheme from './themes/dark'
 import SearchPanel from './components/SearchPanel';
-import RecipeModal from './components/RecipeModal';
+import RecipeModal from './components/RecipeModal/RecipeModal';
 import { injectStyle } from './utils/injectStyle';
 
 
