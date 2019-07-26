@@ -1,17 +1,20 @@
 import { h } from 'preact';
 import useStoreon from 'storeon/preact';
 import { injectStyle } from '../utils/injectStyle';
+import { WithStyles } from '../types/Style';
 
+interface OwnProps {
+}
 
-const Temp = props => {
-  const { classes } = props;
+type Props = OwnProps & WithStyles<typeof style>;
+
+const Temp = ({ classes }: Props)  => {
 
   const { dispatch, temp } = useStoreon('temp');
 
 
   return (
     <div class={classes.main}>
-
     </div>
   );
 };

@@ -1,14 +1,20 @@
-import { h } from 'preact';
+import { h, JSX } from 'preact';
 import cs from 'classnames';
 import { injectStyle } from '../utils/injectStyle';
+import { WithStyles } from '../types/Style';
 
-const Loader = props => {
-  const { classes } = props;
+interface OwnProps {
+  children: JSX.Element[]
+}
+
+type Props = OwnProps & WithStyles<typeof style>;
+  
+export const Loader = ({ classes, children }: Props) => {
 
   return (
     <div class={classes.main}>
       <div class={cs(classes.loader, 'loader')}></div>
-      {props.children}
+      {children}
     </div>
   );
 };
